@@ -1,19 +1,24 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
+import React from 'react';
+import PropTypes from 'prop-types'
+import { Provider } from 'react-redux';
+
+import IndexRouter from './route/index';
 import './App.css';
 
-class App extends Component {
+class App extends React.Component {
+  constructor(props) {
+    super(props)
+  }
+
+  static propTypes = {
+    store: PropTypes.object.isRequired,
+  };
+
   render() {
     return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
+      <Provider store={this.props.store}>
+        <IndexRouter />
+      </Provider>
     );
   }
 }
