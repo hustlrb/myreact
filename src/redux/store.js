@@ -4,7 +4,6 @@ import createHistory from 'history/createBrowserHistory';
 import { createLogger } from 'redux-logger';
 import createSagaMiddleware, { END } from 'redux-saga';
 import { persistStore } from 'redux-persist';
-import createFilter from 'redux-persist-transform-filter';
 
 import rootReducer from './reducer';
 import rootSaga from './saga';
@@ -43,12 +42,9 @@ const createAppStore = (initialState = {}) => {
 };
 
 const store = createAppStore(window.__INITIAL_STATE__);
-
-const configFilter = createFilter('CONFIG', []);
-persistStore(store, {
-  whitelist: ['CONFIG'],
-  transforms: [configFilter]
+const persistor = persistStore(store, {
+  blacklist: ['router']
 });
 
-export { routerHistory };
+export { routerHistory, persistor };
 export default store;
