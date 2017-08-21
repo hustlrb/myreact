@@ -6,41 +6,44 @@ import {REHYDRATE} from 'redux-persist/constants'
 import {ConfigRecord} from './model'
 import * as configActionTypes from './constant'
 
-const initialState = ConfigRecord()
+const initialState = ConfigRecord();
 
-export default function configReducer(state = initialState, action) {
+const configReducer = (state = initialState, action) => {
   switch (action.type) {
-    case configActionTypes.FETCH_DOMAIN_SUCCESS:
-      return handleSaveDomain(state, action)
-    case configActionTypes.FETCH_POSITION_SUCCESS:
-      return handleSaveLocation(state, action)
+    case configActionTypes.FINISH_FETCH_DOMAIN:
+      return onFetchDomain(state, action);
+    case configActionTypes.FINISH_FETCH_POSITION:
+      return onFetchLocation(state, action);
     case REHYDRATE:
-      return onRehydrate(state, action)
+      return onRehydrate(state, action);
     default:
-      return state
+      return state;
   }
-}
+};
 
-function handleSaveDomain(state, action) {
-  let domain = action.payload.domain
-  state = state.set('domain', domain)
-  return state
-}
+export default configReducer;
 
-function handleSaveLocation(state, action) {
-  let location = action.payload.location
-  state = state.set('location', location)
-  return state
-}
+const onFetchDomain = (state, action) => {
+  let domain = action.payload.domain;
+  state = state.set('domain', domain);
+  return state;
+};
 
-function onRehydrate(state, action) {
-  var incoming = action.payload.CONFIG
-  if (!incoming) return state
+const onFetchLocation = (state, action) => {
+  let location = action.payload.location;
+  state = state.set('location', location);
+  return state;
+};
 
-  let domain = incoming.domain
+const onRehydrate = (state, action) => {
+  const config = action.payload.CONFIG;
+  if (!config)
+    return state;
+
+  const domain = config.domain;
   if (domain) {
-    state = state.set('domain', domain)
+    state = state.set('domain', domain);
   }
 
-  return state
-}
+  return state;
+};

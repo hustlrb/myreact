@@ -1,25 +1,23 @@
-/**
- * Created by yangyang on 2017/6/28.
- */
-import { call, put, takeEvery } from 'redux-saga/effects'
-import {fetchDomain, fetchPosition} from '../../api/config'
-import * as configActionTypes from './constant'
-import {requestDomainSuccess, requestPositionSuccess} from './action'
-import {Location} from './model'
-
-export function* fetchDomainAction(action) {
-  let payload = action.payload
-  let domain = yield call(fetchDomain, payload)
-  yield put(requestDomainSuccess({domain}))
-}
-
-export function* fetchPositionAction(action) {
-  let payload = action.payload
-  let position = yield call(fetchPosition, payload)
-  yield put(requestPositionSuccess({location: Location.fromApi(position)}))
-}
+import { call, put, takeEvery } from 'redux-saga/effects';
+import * as configActionTypes from './constant';
+import { finishFetchDomain, finishFetchPosition } from './action';
+import { fetchDomain, fetchPosition } from '../../api/config';
+import { Location } from './model';
 
 export const configSaga = [
-  takeEvery(configActionTypes.FETCH_DOMAIN, fetchDomainAction),
-  takeEvery(configActionTypes.FETCH_POSITION, fetchPositionAction)
-]
+  takeEvery(configActionTypes.REQUEST_FETCH_DOMAIN, handleFetchDomain),
+  takeEvery(configActionTypes.REQUEST_FETCH_POSITION, handleFetchPosition)
+];
+
+function* handleFetchDomain(action) {
+  let payload = action.payload;
+  let domain = yield call(fetchDomain, payload);
+  yield put(finishFetchDomain({domain}));
+}
+
+function* handleFetchPosition(action) {
+  let payload = action.payload;
+  let position = yield call(fetchPosition, payload);
+  yield put(finishFetchPosition({location: Location.fromApi(position)}));
+}
+
