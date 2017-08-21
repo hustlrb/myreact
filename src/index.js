@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { store } from './store/persistStore';
 import RedBox from 'redbox-react';
-import './index.css';
+import store from './redux/store';
 import App from './App'
+import './index.css';
 import registerServiceWorker from './registerServiceWorker';
 
 try {

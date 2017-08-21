@@ -152,7 +152,7 @@ module.exports = {
               
               compact: true,
               plugins: [
-                ['import', [{ libraryName: 'antd', style: true }]],  // import less
+                ['import', [{libraryName: 'antd', style: true}]],  // import less
               ],
             },
           },
