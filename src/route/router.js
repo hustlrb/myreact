@@ -7,7 +7,7 @@ import MainFrame from './MainFrame/index'
 import Home from './Home/index'
 import About from './About/index'
 
-const IndexRouter = () => {
+const RootRouter = () => {
   return (
     <ConnectedRouter history={routerHistory}>
       <MainFrame>
@@ -20,4 +20,4 @@ const IndexRouter = () => {
   );
 };
 
-export default IndexRouter;
+export default RootRouter;

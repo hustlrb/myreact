@@ -2,16 +2,12 @@
  * Created by yangyang on 2017/6/28.
  */
 
-export function selectDomain(state) {
-  let config = state.CONFIG
+export function selectDomain(appState) {
+  let config = appState.config
   return config.domain
 }
 
-export function selectLocation(state) {
-  let config = state.CONFIG
-  let location = config.location
-  if (location) {
-    return location.toJS()
-  }
-  return undefined
+export function selectLocation(appState) {
+  let config = appState.config
+  return config.location
 }

@@ -13,7 +13,7 @@ export function fetchDomain(payload) {
   })
 }
 
-export function fetchPosition(payload) {
+export function fetchLocation(payload) {
   // return new Promise((resolve, reject) => {
   //   resolve({
   //     latitude: 20.23323,
@@ -30,12 +30,12 @@ export function fetchPosition(payload) {
   return Promise.resolve({
     latitude: 20.23323,
     longitude: 122.34134,
-    address: '湖南省长沙市岳麓区麓谷街道',
+    address: '湖南省长沙市岳麓区尖山路39号',
     country: '中国',
     province: '湖南省',
     city: '长沙市',
     district: '岳麓区',
-    street: '麓谷街道',
-    streetNumber: 23,
+    street: '尖山路',
+    streetNumber: 39,
   });
 }

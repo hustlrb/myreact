@@ -5,7 +5,7 @@ import configReducer from '../route/Home/reducer';
 
 const rootReducer = combineReducers({
   router: routerReducer,
-  CONFIG: configReducer,
+  config: configReducer,
 });
 
 export default rootReducer;

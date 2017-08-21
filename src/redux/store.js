@@ -41,10 +41,10 @@ const createAppStore = (initialState = {}) => {
   return store
 };
 
-const store = createAppStore(window.__INITIAL_STATE__);
-const persistor = persistStore(store, {
+const appStore = createAppStore(window.__INITIAL_STATE__);
+const persistor = persistStore(appStore, {
   blacklist: ['router']
 });
 
 export { routerHistory, persistor };
-export default store;
+export default appStore;

@@ -5,7 +5,7 @@ import React, {Component} from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { Button } from 'antd'
-import { requestFetchPosition } from './action'
+import { requestFetchLocation } from './action'
 import {selectLocation, selectDomain} from './selector'
 
 import logo from './logo.svg';
@@ -37,7 +37,7 @@ class Home extends Component {
       <div>
         主内容页面
         <div>
-          <Button type="primary" onClick={() => {this.props.requestFetchPosition()}}>获取地理位置</Button>
+          <Button type="primary" onClick={() => {this.props.requestFetchLocation()}}>获取地理位置</Button>
         </div>
         <div>
           {this.props.location ? this.props.location.address : ""}
@@ -47,15 +47,15 @@ class Home extends Component {
   }
 }
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = (appState, ownProps) => {
   return {
-    location: selectLocation(state),
-    domain: selectDomain(state)
+    location: selectLocation(appState),
+    domain: selectDomain(appState)
   }
 };
 
 const mapDispatchToProps = (dispatch) => bindActionCreators({
-  requestFetchPosition,
+  requestFetchLocation,
 }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home)

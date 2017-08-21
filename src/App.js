@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types'
 import { Provider } from 'react-redux';
 
-import IndexRouter from './route/index';
+import RootRouter from './route/router';
 import './App.css';
 
 class App extends React.Component {
@@ -17,7 +17,7 @@ class App extends React.Component {
   render() {
     return (
       <Provider store={this.props.store}>
-        <IndexRouter />
+        <RootRouter />
       </Provider>
     );
   }

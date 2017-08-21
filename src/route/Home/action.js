@@ -3,5 +3,5 @@ import * as configActionTypes from './constant';
 
 export const requestFetchDomain = createAction(configActionTypes.REQUEST_FETCH_DOMAIN);
 export const finishFetchDomain = createAction(configActionTypes.FINISH_FETCH_DOMAIN);
-export const requestFetchPosition = createAction(configActionTypes.REQUEST_FETCH_POSITION);
-export const finishFetchPosition = createAction(configActionTypes.FINISH_FETCH_POSITION);
+export const requestFetchLocation = createAction(configActionTypes.REQUEST_FETCH_LOCATION);
+export const finishFetchLocation = createAction(configActionTypes.FINISH_FETCH_LOCATION);
