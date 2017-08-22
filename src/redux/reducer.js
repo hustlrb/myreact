@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 import { routerReducer } from 'react-router-redux';
-import aboutReducer from '../route/About/reducer';
+import { reducer as aboutReducer } from '../view/about/';
 
 const rootReducer = combineReducers({
   router: routerReducer,

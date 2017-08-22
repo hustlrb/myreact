@@ -3,19 +3,19 @@ import { Route, Switch } from 'react-router-dom';
 import { ConnectedRouter } from 'react-router-redux';
 
 import { routerHistory } from '../redux/store'
-import MainFrame from './MainFrame/index'
-import Home from './Home/index'
-import About from './About/index'
+import FrameWork from './framework/'
+import Home from './home/'
+import { view as About } from './about/'
 
 const RootRouter = () => {
   return (
     <ConnectedRouter history={routerHistory}>
-      <MainFrame>
+      <FrameWork>
         <Switch>
           <Route exact path="/" component={Home}/>
           <Route path="/about" component={About}/>
         </Switch>
-      </MainFrame>
+      </FrameWork>
     </ConnectedRouter>
   );
 };

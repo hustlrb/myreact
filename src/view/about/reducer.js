@@ -1,23 +1,23 @@
 import { REHYDRATE } from 'redux-persist/constants';
-import * as ActionTypes from './constant';
+import * as ActionType from './actionType';
 import AboutModel from './model';
 
 const initialState = AboutModel();
 
-const aboutReducer = (state=initialState, action) => {
+const reducer = (state=initialState, action) => {
   switch (action.type) {
     case REHYDRATE:
       return finishRehydrate(state, action);
-    case ActionTypes.FINISH_FETCH_DOMAIN:
+    case ActionType.FINISH_FETCH_DOMAIN:
       return finishFetchDomain(state, action);
-    case ActionTypes.FINISH_FETCH_LOCATION:
+    case ActionType.FINISH_FETCH_LOCATION:
       return finishFetchLocation(state, action);
     default:
       return state;
   }
 };
 
-export default aboutReducer;
+export default reducer;
 
 const finishRehydrate = (state, action) => {
   const config = action.payload.config;

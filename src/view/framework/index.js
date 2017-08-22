@@ -5,11 +5,11 @@ import {
   Col,
 } from 'antd'
 import {Link} from 'react-router-dom'
-import SideMenu from '../../component/SiderMenu/index'
+import SideMenu from './component/SiderMenu'
 
 const { Header, Footer, Sider, Content } = Layout
 
-export default class MainFrame extends Component {
+export default class FrameWork extends Component {
   constructor(props) {
     super(props)
   }

@@ -1,9 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import PropTypes from 'prop-types';
 import { Button } from 'antd';
-import { requestFetchLocation, requestFetchDomain } from './action';
-import { selectLocation, selectDomain } from './selector';
+import { requestFetchLocation, requestFetchDomain } from '../action';
+import { selectLocation, selectDomain } from '../selector';
 import logo from './logo.svg';
 import './style.css';
 
@@ -12,24 +13,23 @@ class About extends React.Component {
     super(props);
   }
 
+  static propTypes = {
+    domain: PropTypes.string.isRequired,
+    location: PropTypes.object.isRequired
+  };
+
+  static defaultProps = {
+    domain: "loading..",
+    location: {address: "loading.."}
+  };
+
   componentDidMount() {
     this.props.requestFetchDomain({times: 2});
   }
 
   render() {
-    let domain = null;
-    if (this.props.domain) {
-      domain = this.props.domain;
-    } else {
-      domain = "loading..";
-    }
-
-    let location = null;
-    if (this.props.location) {
-      location = this.props.location.address;
-    } else {
-      location = "loading..";
-    }
+    let domain = this.props.domain;
+    let location = this.props.location.address;
 
     return (
       <div className="App">
