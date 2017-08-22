@@ -1,6 +1,3 @@
-/**
- * Created by yangyang on 2017/6/28.
- */
 import React, {Component} from 'react'
 import {
   Layout,

@@ -1,9 +1,6 @@
-/**
- * Created by yangyang on 2017/6/28.
- */
 export function fetchDomain(payload) {
-  let times = payload.times
-  if (times == 1) {
+  let times = payload.times;
+  if (times === 1) {
     return new Promise((resolve) => {
       resolve('xiaojee.cn')
     })

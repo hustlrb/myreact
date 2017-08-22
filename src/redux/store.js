@@ -4,7 +4,6 @@ import createHistory from 'history/createBrowserHistory';
 import { createLogger } from 'redux-logger';
 import createSagaMiddleware, { END } from 'redux-saga';
 import { persistStore } from 'redux-persist';
-
 import rootReducer from './reducer';
 import rootSaga from './saga';
 

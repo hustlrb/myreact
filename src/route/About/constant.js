@@ -1,6 +1,3 @@
-/**
- * Created by yangyang on 2017/6/28.
- */
 export const REQUEST_FETCH_DOMAIN = 'REQUEST_FETCH_DOMAIN';
 export const FINISH_FETCH_DOMAIN = 'FINISH_FETCH_DOMAIN';
 export const REQUEST_FETCH_LOCATION = 'REQUEST_FETCH_LOCATION';

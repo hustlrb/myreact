@@ -12,11 +12,11 @@ const LocationRecord = Record({
   streetNumber: undefined,
 }, 'LocationRecord');
 
-const ConfigRecord = Record({
+const AboutModel = Record({
   domain: undefined,
   appname: undefined,
   location: undefined,
-}, "ConfigRecord");
+}, "AboutModel");
 
-export { ConfigRecord };
+export default AboutModel;
 export { LocationRecord };
