@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import PropTypes from 'prop-types';
+import { push } from 'react-router-redux'
 import { Button } from 'antd';
 import { requestFetchLocation, requestFetchDomain } from '../action';
 import { selectLocation, selectDomain } from '../selector';
@@ -41,11 +42,14 @@ class About extends React.Component {
           当前域名: {domain}
         </p>
         <div>
-          <Button type="primary" onClick={() => {this.props.requestFetchLocation()}}>获取地理位置</Button>
+          <Button type="primary" onClick={this.props.requestFetchLocation}>获取地理位置</Button>
         </div>
         <div>
           {location}
         </div>
+        <Button type="primary" onClick={this.props.gotoHome}>返回首页</Button>
+        <Button type="primary" onClick={() => this.props.gotoHome()}>返回首页</Button>
+        <Button type="primary" onClick={() => {this.props.gotoHome();}}>返回首页</Button>
       </div>
     );
   }
@@ -59,6 +63,8 @@ const mapStateToProps = (appState, ownProps) => {
 };
 
 const mapDispatchToProps = (dispatch) => bindActionCreators({
+  // gotoHome: () => { return push("/") },
+  gotoHome: () => push("/"),
   requestFetchLocation,
   requestFetchDomain
 }, dispatch);
