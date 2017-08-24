@@ -69,11 +69,11 @@ const mapStateToProps = (appState, ownProps) => {
   };
 };
 
-const mapDispatchToProps = (dispatch) => bindActionCreators({
+const mapDispatchToProps = {
   // gotoHome: () => { return push("/") },
   gotoHome: () => push("/"),
   requestFetchLocation,
   requestFetchDomain
-}, dispatch);
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(About);
