@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import PropTypes from 'prop-types';
 import { push } from 'react-router-redux'
-import { Button } from 'antd';
+import { Button, Card } from 'antd';
 import { requestFetchLocation, requestFetchDomain } from '../action';
 import { selectLocation, selectDomain } from '../selector';
 import logo from './logo.svg';
@@ -50,6 +50,13 @@ class About extends React.Component {
         <Button type="primary" onClick={this.props.gotoHome}>返回首页</Button>
         <Button type="primary" onClick={() => this.props.gotoHome()}>返回首页</Button>
         <Button type="primary" onClick={() => {this.props.gotoHome();}}>返回首页</Button>
+        <div style={{ background: '#ECECEC', padding: '30px' }}>
+          <Card title="Card title" bordered={true} style={{ width: 300 }}>
+            <p>Card content</p>
+            <p>Card content</p>
+            <p>Card content</p>
+          </Card>
+        </div>
       </div>
     );
   }
