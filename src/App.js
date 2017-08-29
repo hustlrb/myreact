@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'react-router-redux';
 
 import { routerHistory } from './redux/store';
-import AppFx from './view/appfx/';
+import { view as AppFx } from './view/appfx/';
 import './App.css';
 
 class App extends React.Component {

@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { push } from 'react-router-redux'
 import { Button, Card } from 'antd';
-import { requestFetchLocation, requestFetchDomain } from '../action';
-import { selectLocation, selectDomain } from '../selector';
+import { requestFetchLocation, requestFetchDomain } from '../redux/action';
+import { selectLocation, selectDomain } from '../redux/selector';
 import logo from './logo.svg';
 import './style.css';
 

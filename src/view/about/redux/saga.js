@@ -1,7 +1,7 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
 import * as ActionType from './actionType';
 import { finishFetchDomain, finishFetchLocation } from './action';
-import { fetchDomain, fetchLocation } from '../../api/about';
+import { fetchDomain, fetchLocation } from '../../../api/about';
 
 const saga = [
   takeEvery(ActionType.REQUEST_FETCH_LOCATION, requestFetchLocation),
