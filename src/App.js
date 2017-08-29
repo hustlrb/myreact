@@ -5,7 +5,6 @@ import { ConnectedRouter } from 'react-router-redux';
 
 import { routerHistory } from './redux/store';
 import { view as AppFx } from './view/appfx/';
-import './App.css';
 
 class App extends React.Component {
   static propTypes = {

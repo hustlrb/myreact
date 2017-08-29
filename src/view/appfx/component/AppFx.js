@@ -1,46 +1,48 @@
 import React from 'react';
 import { Route, Switch, Link } from 'react-router-dom';
-import { Layout, Row, Col } from 'antd';
+import { Layout, Icon, Menu, Breadcrumb } from 'antd';
 
 import SiderMenu from './SiderMenu';
 import { view as Home } from '../../home/';
 import { view as Example } from '../../example/';
 
+import './AppFx.css';
+
+const { SubMenu } = Menu;
 const { Header, Footer, Sider, Content } = Layout;
 
 class AppFx extends React.Component {
   render() {
     return (
-      <Layout style={{height: '100%'}}>
+      <Layout style={{ height: "100%" }}>
         <Header>
-          <Row>
-            <Col span={2}>
-              <Link to="/">LOGO</Link>
-            </Col>
-            <Col span={22}>
-              <Link to="/example">example</Link>
-            </Col>
-          </Row>
+          <div className="logo" />
+          <div style={{float: "left"}}>共享干衣柜后台管理系统</div>
+          <Menu
+            theme="dark"
+            mode="horizontal"
+            defaultSelectedKeys={['2']}
+            style={{ lineHeight: '64px', float: "right", background: '#373D41' }}
+          >
+            <Menu.Item key="loginUser">您好，系统管理员</Menu.Item>
+          </Menu>
         </Header>
-
         <Layout>
-          <Sider>
-            <SiderMenu />
-          </Sider>
-
+          <SiderMenu />
           <Layout>
-            <Content style={{ margin: '0 16px', overflow: 'initial' }}>
-              <Switch>
-                <Route exact path="/" component={Home}/>
-                <Route path="/example" component={Example}/>
-              </Switch>
+            <Breadcrumb style={{ margin: '12px' }}>
+              <Breadcrumb.Item>Home</Breadcrumb.Item>
+              <Breadcrumb.Item>List</Breadcrumb.Item>
+              <Breadcrumb.Item>App</Breadcrumb.Item>
+            </Breadcrumb>
+            <Content style={{ background: '#fff', padding: '12px', minHeight: '280px' }}>
+              Content
             </Content>
-
-            <Footer>Footer</Footer>
+            <Footer style={{ textAlign: 'center', padding: '12px'}}>
+              衣家宝 ©2017 Created by http://lvyii.com
+            </Footer>
           </Layout>
         </Layout>
-
-
       </Layout>
     )
   }
