@@ -1,15 +1,13 @@
 import React from 'react';
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
 import { Provider } from 'react-redux';
+import { ConnectedRouter } from 'react-router-redux';
 
-import RootRouter from './view/router';
+import { routerHistory } from './redux/store';
+import AppFx from './view/appfx/';
 import './App.css';
 
 class App extends React.Component {
-  constructor(props) {
-    super(props)
-  }
-
   static propTypes = {
     store: PropTypes.object.isRequired,
   };
@@ -17,7 +15,9 @@ class App extends React.Component {
   render() {
     return (
       <Provider store={this.props.store}>
-        <RootRouter />
+        <ConnectedRouter history={routerHistory}>
+          <AppFx />
+        </ConnectedRouter>
       </Provider>
     );
   }

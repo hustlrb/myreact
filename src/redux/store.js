@@ -1,15 +1,15 @@
-import { applyMiddleware, compose, createStore } from 'redux'
+import { applyMiddleware, compose, createStore } from 'redux';
 import { routerMiddleware } from 'react-router-redux';
 import createHistory from 'history/createBrowserHistory';
 import { createLogger } from 'redux-logger';
-import createSagaMiddleware, { END } from 'redux-saga';
+import createSagaMiddleware from 'redux-saga';
 import { persistStore } from 'redux-persist';
 import Perf from 'react-addons-perf';
 import rootReducer from './reducer';
 import rootSaga from './saga';
 
 const win = window;
-win.Perf = Perf
+win.Perf = Perf;
 
 const routerHistory = createHistory();
 
@@ -33,13 +33,6 @@ const createAppStore = (initialState = {}) => {
   );
 
   saga.run(rootSaga);
-  store.close = () => store.dispatch(END);
-
-  if (module.hot) {
-    module.hot.accept('./reducer', () => {
-      store.replaceReducer(rootReducer)
-    })
-  }
 
   return store
 };

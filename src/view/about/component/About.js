@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 import PropTypes from 'prop-types';
 import { push } from 'react-router-redux'
 import { Button, Card } from 'antd';
@@ -10,10 +9,6 @@ import logo from './logo.svg';
 import './style.css';
 
 class About extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   static propTypes = {
     domain: PropTypes.string.isRequired,
     location: PropTypes.object.isRequired

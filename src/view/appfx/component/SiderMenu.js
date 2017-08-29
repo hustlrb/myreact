@@ -7,10 +7,6 @@ import {Link} from 'react-router-dom'
 const { SubMenu } = Menu
 
 class SiderMenu extends Component {
-  constructor(props) {
-    super(props)
-  }
-
   key1OnClick = (item, key, keyPath) => {
     // return (
     //   <Link to="/about"/>

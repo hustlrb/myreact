@@ -6,14 +6,13 @@ import {
 } from 'antd'
 import {Link} from 'react-router-dom'
 import SideMenu from './component/SiderMenu'
+import Home from '../home/'
+import { Route, Switch } from 'react-router-dom';
+import { view as About } from '../about/'
 
 const { Header, Footer, Sider, Content } = Layout
 
-export default class FrameWork extends Component {
-  constructor(props) {
-    super(props)
-  }
-
+export default class AppFx extends Component {
   render() {
     return (
       <Layout style={{height: '100%'}}>
@@ -34,11 +33,17 @@ export default class FrameWork extends Component {
           </Sider>
 
           <Content>
-            {this.props.children}
+
+            <Switch>
+              <Route exact path="/" component={Home}/>
+              <Route path="/about" component={About}/>
+            </Switch>
           </Content>
         </Layout>
 
         <Footer>Footer</Footer>
+
+
       </Layout>
     )
   }
