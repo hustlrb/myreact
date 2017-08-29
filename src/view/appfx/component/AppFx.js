@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, Switch, Link } from 'react-router-dom';
 import { Layout, Row, Col } from 'antd';
 
-import SideMenu from './SiderMenu';
+import SiderMenu from './SiderMenu';
 import { view as Home } from '../../home/';
 import { view as About } from '../../about/';
 
@@ -25,18 +25,20 @@ class AppFx extends React.Component {
 
         <Layout>
           <Sider>
-            <SideMenu />
+            <SiderMenu />
           </Sider>
 
-          <Content>
-            <Switch>
-              <Route exact path="/" component={Home}/>
-              <Route path="/about" component={About}/>
-            </Switch>
-          </Content>
-        </Layout>
+          <Layout>
+            <Content>
+              <Switch>
+                <Route exact path="/" component={Home}/>
+                <Route path="/about" component={About}/>
+              </Switch>
+            </Content>
 
-        <Footer>Footer</Footer>
+            <Footer>Footer</Footer>
+          </Layout>
+        </Layout>
 
 
       </Layout>
