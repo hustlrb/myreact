@@ -1,12 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
+import BasicTable from './Table';
+
 class Home extends React.Component {
   render() {
     return (
-      <div>
-        主内容页面
-      </div>
+      <BasicTable />
     )
   }
 }

@@ -29,7 +29,7 @@ class AppFx extends React.Component {
           </Sider>
 
           <Layout>
-            <Content>
+            <Content style={{ margin: '0 16px', overflow: 'initial' }}>
               <Switch>
                 <Route exact path="/" component={Home}/>
                 <Route path="/example" component={Example}/>
