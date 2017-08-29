@@ -4,7 +4,7 @@ import { Layout, Row, Col } from 'antd';
 
 import SiderMenu from './SiderMenu';
 import { view as Home } from '../../home/';
-import { view as About } from '../../about/';
+import { view as Example } from '../../example/';
 
 const { Header, Footer, Sider, Content } = Layout;
 
@@ -18,7 +18,7 @@ class AppFx extends React.Component {
               <Link to="/">LOGO</Link>
             </Col>
             <Col span={22}>
-              <Link to="/about">关于我们</Link>
+              <Link to="/example">example</Link>
             </Col>
           </Row>
         </Header>
@@ -32,7 +32,7 @@ class AppFx extends React.Component {
             <Content>
               <Switch>
                 <Route exact path="/" component={Home}/>
-                <Route path="/about" component={About}/>
+                <Route path="/example" component={Example}/>
               </Switch>
             </Content>
 

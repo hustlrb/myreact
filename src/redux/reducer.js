@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
 import { routerReducer } from 'react-router-redux';
-import { reducer as aboutReducer } from '../view/about/';
+import { reducer as exampleReducer } from '../view/example/';
 
 const rootReducer = combineReducers({
   router: routerReducer,
-  about: aboutReducer,
+  example: exampleReducer,
 });
 
 export default rootReducer;

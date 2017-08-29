@@ -12,11 +12,11 @@ const LocationRecord = Record({
   streetNumber: undefined,
 }, 'LocationRecord');
 
-const AboutModel = Record({
+const ExampleModel = Record({
   domain: undefined,
   appname: undefined,
   location: undefined,
-}, "AboutModel");
+}, "ExampleModel");
 
-export default AboutModel;
+export default ExampleModel;
 export { LocationRecord };

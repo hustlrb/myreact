@@ -1,8 +1,8 @@
 import { REHYDRATE } from 'redux-persist/constants';
 import * as ActionType from './actionType';
-import AboutModel from './model';
+import ExampleModel from './model';
 
-const initialState = AboutModel();
+const initialState = ExampleModel();
 
 const reducer = (state=initialState, action) => {
   switch (action.type) {
