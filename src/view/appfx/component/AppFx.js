@@ -1,5 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import { Layout } from 'antd';
 
 import AppHeader from './AppHeader';
@@ -9,7 +8,6 @@ import AppContent from './AppContent';
 import AppFooter from './AppFooter';
 
 const AppFx = () => {
-  console.log('AppFx location: ', this.props);
   return (
     <Layout style={{ height: "100%" }}>
       <AppHeader />
@@ -25,4 +23,4 @@ const AppFx = () => {
   )
 };
 
-export default connect(null, null)(AppFx);
+export default AppFx;

@@ -1,14 +1,10 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { Layout, Menu, Icon } from 'antd';
-import { bindActionCreators } from 'redux';
-import './AppMenu.css'
+import './AppMenu.less'
 
-const { SubMenu } = Menu;
-const { Sider } = Layout;
-
-class SiderMenu extends React.Component {
+class AppMenu extends React.Component {
   static __ANT_LAYOUT_SIDER = true;
 
   state = {
@@ -44,9 +40,8 @@ class SiderMenu extends React.Component {
   };
 
   render() {
-    console.log('location prop: ', this.props);
     return (
-      <Sider width={200} style={{ background: "#333744" }}>
+      <Layout.Sider width={200} style={{ background: "#333744" }}>
         <Menu
           theme="dark"
           mode="inline"
@@ -56,41 +51,33 @@ class SiderMenu extends React.Component {
           onOpenChange={this.onOpenChange}
           onClick={this.handleClick}
         >
-          <SubMenu key="/cabinet" title={<span><Icon type="laptop" />干衣柜综合管理</span>}>
-            <Menu.Item key="/cabinet/list">干衣柜信息管理</Menu.Item>
-          </SubMenu>
+          <Menu.SubMenu key="/cabinet" title={<span><Icon type="laptop" />干衣柜综合管理</span>}>
+            <Menu.Item key="/cabinet/list"><Link to="/about">干衣柜信息管理</Link></Menu.Item>
+          </Menu.SubMenu>
 
-          <SubMenu key="/site" title={<span><Icon type="laptop" />服务点综合管理</span>}>
-            <Menu.Item key="/site/list">服务点信息管理</Menu.Item>
-            <Menu.Item key="/site/cabinet">服务点干衣柜管理</Menu.Item>
+          <Menu.SubMenu key="/site" title={<span><Icon type="laptop" />服务点综合管理</span>}>
+            <Menu.Item key="/site/list"><Link to="/other">服务点信息管理</Link></Menu.Item>
+            <Menu.Item key="/site/cabinet"><Link to="/another">服务点干衣柜管理</Link></Menu.Item>
             <Menu.Item key="/site/investor">投资人信息管理</Menu.Item>
-          </SubMenu>
-          <SubMenu key="/order" title={<span><Icon type="notification" />充值与订单管理</span>}>
+          </Menu.SubMenu>
+          <Menu.SubMenu key="/order" title={<span><Icon type="notification" />充值与订单管理</span>}>
             <Menu.Item key="/order/deposit">用户充值管理</Menu.Item>
             <Menu.Item key="/order/list">订单信息管理</Menu.Item>
-          </SubMenu>
-          <SubMenu key="/settlement" title={<span><Icon type="notification" />结算管理</span>}>
+          </Menu.SubMenu>
+          <Menu.SubMenu key="/settlement" title={<span><Icon type="notification" />结算管理</span>}>
             <Menu.Item key="/settlement/list">服务点分成统计</Menu.Item>
             <Menu.Item key="/settlement/site">服务单位分成结算</Menu.Item>
             <Menu.Item key="/settlement/investor">投资人分成结算</Menu.Item>
-          </SubMenu>
-          <SubMenu key="/system" title={<span><Icon type="notification" />系统管理</span>}>
+          </Menu.SubMenu>
+          <Menu.SubMenu key="/system" title={<span><Icon type="notification" />系统管理</span>}>
             <Menu.Item key="/system/user">用户与角色管理</Menu.Item>
             <Menu.Item key="/system/role">角色与权限管理</Menu.Item>
             <Menu.Item key="/system/log">操作日志管理</Menu.Item>
-          </SubMenu>
+          </Menu.SubMenu>
         </Menu>
-      </Sider>
+      </Layout.Sider>
     )
   }
 }
 
-const mapStateToProps = (state, ownProps) => {
-  return {
-  }
-};
-
-const mapDispatchToProps = (dispatch) => bindActionCreators({
-}, dispatch);
-
-export default connect(mapStateToProps, mapDispatchToProps)(SiderMenu);
+export default connect()(AppMenu);

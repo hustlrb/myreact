@@ -1,12 +1,16 @@
 import React from 'react';
-import { Link, Route } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { Layout, Menu } from 'antd';
-import './AppHeader.css'
+import './AppHeader.less'
+
+import logo from '../../example/component/logo.svg';
+
 const AppHeader = () => {
   return (
     <Layout.Header>
-      <div className="logo" />
-      <div style={{float: "left"}}>共享干衣柜后台管理系统</div>
+      <Link to="/"><img src={logo} className="logo" alt="logo" /></Link>
+      <span className="header-title">共享干衣柜后台管理系统</span>
       <Menu
         theme="dark"
         mode="horizontal"
@@ -19,4 +23,4 @@ const AppHeader = () => {
   );
 };
 
-export default AppHeader;
+export default connect()(AppHeader);
