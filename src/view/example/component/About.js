@@ -3,20 +3,20 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { push } from 'react-router-redux'
 import { Button, Card } from 'antd';
-import { requestFetchLocation, requestFetchDomain } from '../redux/action';
-import { selectLocation, selectDomain } from '../redux/selector';
+import { requestFetchPosition, requestFetchDomain } from '../redux/action';
+import { selectPosition, selectDomain } from '../redux/selector';
 import logo from './logo.svg';
 import './About.css';
 
 class About extends React.Component {
   static propTypes = {
     domain: PropTypes.string.isRequired,
-    location: PropTypes.object.isRequired
+    position: PropTypes.object.isRequired
   };
 
   static defaultProps = {
     domain: "loading..",
-    location: {address: "loading.."}
+    position: {address: "loading.."}
   };
 
   componentDidMount() {
@@ -25,8 +25,7 @@ class About extends React.Component {
 
   render() {
     let domain = this.props.domain;
-    let location = this.props.location.address;
-
+    let position = this.props.position.address;
     return (
       <div className="App">
         <div className="App-header">
@@ -37,10 +36,10 @@ class About extends React.Component {
           当前域名: {domain}
         </p>
         <div>
-          <Button type="primary" onClick={this.props.requestFetchLocation}>获取地理位置</Button>
+          <Button type="primary" onClick={this.props.requestFetchPosition}>获取地理位置</Button>
         </div>
         <div>
-          {location}
+          {position}
         </div>
         <Button type="primary" onClick={this.props.gotoHome}>返回首页</Button>
         <Button type="primary" onClick={() => this.props.gotoHome()}>返回首页</Button>
@@ -59,7 +58,7 @@ class About extends React.Component {
 
 const mapStateToProps = (appState, ownProps) => {
   return {
-    location: selectLocation(appState),
+    position: selectPosition(appState),
     domain: selectDomain(appState)
   };
 };
@@ -67,7 +66,7 @@ const mapStateToProps = (appState, ownProps) => {
 const mapDispatchToProps = {
   // gotoHome: () => { return push("/") },
   gotoHome: () => push("/"),
-  requestFetchLocation,
+  requestFetchPosition,
   requestFetchDomain
 };
 

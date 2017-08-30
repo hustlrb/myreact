@@ -1,6 +1,6 @@
 import { Record } from 'immutable';
 
-const LocationRecord = Record({
+const PositionRecord = Record({
   latitude: undefined,
   longitude: undefined,
   address: undefined,
@@ -10,13 +10,13 @@ const LocationRecord = Record({
   district: undefined,
   street: undefined,
   streetNumber: undefined,
-}, 'LocationRecord');
+}, 'PositionRecord');
 
 const ExampleModel = Record({
   domain: undefined,
   appname: undefined,
-  location: undefined,
+  position: undefined,
 }, "ExampleModel");
 
 export default ExampleModel;
-export { LocationRecord };
+export { PositionRecord };

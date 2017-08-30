@@ -6,7 +6,7 @@ export function fetchDomain(payload) {
   })
 }
 
-export function fetchLocation(payload) {
+export function fetchPosition(payload) {
   // return new Promise((resolve, reject) => {
   //   resolve({
   //     latitude: 20.23323,

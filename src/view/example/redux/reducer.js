@@ -10,7 +10,7 @@ const reducer = (state=initialState, action) => {
       return finishRehydrate(state, action);
     case ActionType.FINISH_FETCH_DOMAIN:
       return finishFetchDomain(state, action);
-    case ActionType.FINISH_FETCH_LOCATION:
+    case ActionType.FINISH_FETCH_POSITION:
       return finishFetchLocation(state, action);
     default:
       return state;
@@ -29,9 +29,9 @@ const finishRehydrate = (state, action) => {
     state = state.set('domain', domain);
   }
 
-  const location = config.location;
-  if (location) {
-    state = state.set('location', location);
+  const position = config.location;
+  if (position) {
+    state = state.set('location', position);
   }
 
   return state;
@@ -44,7 +44,7 @@ const finishFetchDomain = (state, action) => {
 };
 
 const finishFetchLocation = (state, action) => {
-  const location = action.payload.location;
-  state = state.set('location', location);
+  const position = action.payload.position;
+  state = state.set('position', position);
   return state;
 };

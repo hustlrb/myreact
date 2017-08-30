@@ -3,7 +3,7 @@ export function selectDomain(appState) {
   return example.domain;
 }
 
-export function selectLocation(appState) {
+export function selectPosition(appState) {
   let example = appState.example;
-  return example.location;
+  return example.position;
 }

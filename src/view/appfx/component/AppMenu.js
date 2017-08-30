@@ -44,6 +44,7 @@ class SiderMenu extends React.Component {
   };
 
   render() {
+    console.log('location prop: ', this.props);
     return (
       <Sider width={200} style={{ background: "#333744" }}>
         <Menu
