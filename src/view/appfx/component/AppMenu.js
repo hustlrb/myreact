@@ -3,11 +3,14 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Layout, Menu, Icon } from 'antd';
 import { bindActionCreators } from 'redux';
+import './AppMenu.css'
 
 const { SubMenu } = Menu;
 const { Sider } = Layout;
 
 class SiderMenu extends React.Component {
+  static __ANT_LAYOUT_SIDER = true;
+
   state = {
     current: '1',
     openKeys: [],
@@ -80,8 +83,6 @@ class SiderMenu extends React.Component {
     )
   }
 }
-
-SiderMenu.__ANT_LAYOUT_SIDER = true;
 
 const mapStateToProps = (state, ownProps) => {
   return {

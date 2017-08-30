@@ -6,7 +6,7 @@ import { Button, Card } from 'antd';
 import { requestFetchLocation, requestFetchDomain } from '../redux/action';
 import { selectLocation, selectDomain } from '../redux/selector';
 import logo from './logo.svg';
-import './style.css';
+import './About.css';
 
 class About extends React.Component {
   static propTypes = {
