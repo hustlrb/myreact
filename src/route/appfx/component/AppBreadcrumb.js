@@ -4,7 +4,6 @@ import { Breadcrumb } from 'antd';
 
 class AppBreadcrumb extends React.Component {
   render () {
-    console.log('-----------> ', this.props);
     return (
       <Breadcrumb style={{ margin: '12px' }}>
         <Breadcrumb.Item>Home</Breadcrumb.Item>

@@ -1,6 +1,4 @@
 import { applyMiddleware, compose, createStore } from 'redux';
-import { routerMiddleware } from 'react-router-redux';
-import createHistory from 'history/createBrowserHistory';
 import { createLogger } from 'redux-logger';
 import createSagaMiddleware from 'redux-saga';
 import { persistStore } from 'redux-persist';
@@ -11,14 +9,11 @@ import rootSaga from './saga';
 const win = window;
 win.Perf = Perf;
 
-const routerHistory = createHistory();
-
 const createAppStore = (initialState = {}) => {
-  const router = routerMiddleware(routerHistory);
   const saga = createSagaMiddleware();
   const logger = createLogger();
 
-  const middlewares = [router, saga, logger];
+  const middlewares = [saga, logger];
 
   const enhancers = [];
   const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
@@ -42,5 +37,5 @@ const persistor = persistStore(appStore, {
   blacklist: ['router']
 });
 
-export { routerHistory, persistor };
+export { persistor };
 export default appStore;

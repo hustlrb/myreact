@@ -1,13 +1,12 @@
 import React from 'react';
 import { Layout } from 'antd';
-
 import AppHeader from './AppHeader';
 import AppMenu from './AppMenu';
 import AppBreadcrumb from './AppBreadcrumb';
 import AppContent from './AppContent';
 import AppFooter from './AppFooter';
 
-const AppFx = () => {
+const AppFx = (props) => {
   return (
     <Layout style={{ height: "100%" }}>
       <AppHeader />
@@ -15,7 +14,9 @@ const AppFx = () => {
         <AppMenu />
         <Layout>
           <AppBreadcrumb />
-          <AppContent />
+          <AppContent>
+            {props.children}
+          </AppContent>
           <AppFooter />
         </Layout>
       </Layout>
