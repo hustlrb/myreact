@@ -2,8 +2,8 @@ import React from 'react';
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
 import appStore from '../redux/store';
-import { view as AppFx } from './appfx/';
-import { view as About } from './example/';
+import AppFx from './appfx/AppFx';
+import Example from './example/Example';
 
 const history = syncHistoryWithStore(browserHistory, appStore);
 
@@ -31,7 +31,7 @@ const Routes = () => (
       <IndexRoute component={Welcome}/>
       <Route path="other" component={Other} />
       <Route path="another" component={Another} />
-      <Route path="about" component={About} />
+      <Route path="example" component={Example} />
     </Route>
   </Router>
 );

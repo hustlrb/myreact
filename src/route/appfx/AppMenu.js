@@ -52,7 +52,7 @@ class AppMenu extends React.Component {
           onClick={this.handleClick}
         >
           <Menu.SubMenu key="/cabinet" title={<span><Icon type="laptop" />干衣柜综合管理</span>}>
-            <Menu.Item key="/cabinet/list"><Link to="/about">干衣柜信息管理</Link></Menu.Item>
+            <Menu.Item key="/cabinet/list"><Link to="/example">干衣柜信息管理</Link></Menu.Item>
           </Menu.SubMenu>
 
           <Menu.SubMenu key="/site" title={<span><Icon type="laptop" />服务点综合管理</span>}>

@@ -4,7 +4,7 @@ import { Link } from 'react-router';
 import { Layout, Menu } from 'antd';
 import './AppHeader.less'
 
-import logo from '../../example/component/logo.svg';
+import logo from '../example/ExampleLogo.svg';
 
 const AppHeader = () => {
   return (

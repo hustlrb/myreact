@@ -3,10 +3,10 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { push } from 'react-router-redux'
 import { Button, Card } from 'antd';
-import { requestFetchPosition, requestFetchDomain } from '../redux/action';
-import { selectPosition, selectDomain } from '../redux/selector';
-import logo from './logo.svg';
-import './About.css';
+import { actionRequestFetchPosition, actionRequestFetchDomain } from './redux';
+import { selectPosition, selectDomain } from './redux';
+import logo from './ExampleLogo.svg';
+import './Example.css';
 
 class About extends React.Component {
   static propTypes = {
@@ -20,7 +20,7 @@ class About extends React.Component {
   };
 
   componentDidMount() {
-    this.props.requestFetchDomain({times: 2});
+    this.props.actionRequestFetchDomain({times: 2});
   }
 
   render() {
@@ -36,7 +36,7 @@ class About extends React.Component {
           当前域名: {domain}
         </p>
         <div>
-          <Button type="primary" onClick={this.props.requestFetchPosition}>获取地理位置</Button>
+          <Button type="primary" onClick={this.props.actionRequestFetchPosition}>获取地理位置</Button>
         </div>
         <div>
           {position}
@@ -66,8 +66,8 @@ const mapStateToProps = (appState, ownProps) => {
 const mapDispatchToProps = {
   // gotoHome: () => { return push("/") },
   gotoHome: () => push("/"),
-  requestFetchPosition,
-  requestFetchDomain
+  actionRequestFetchPosition,
+  actionRequestFetchDomain
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(About);
