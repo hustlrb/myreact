@@ -2,7 +2,6 @@ import React from 'react';
 import { Layout } from 'antd';
 import AppHeader from './AppHeader';
 import AppMenu from './AppMenu';
-import AppBreadcrumb from './AppBreadcrumb';
 import AppContent from './AppContent';
 import AppFooter from './AppFooter';
 
@@ -13,10 +12,7 @@ const AppFx = (props) => {
       <Layout>
         <AppMenu />
         <Layout>
-          <AppBreadcrumb />
-          <AppContent>
-            {props.children}
-          </AppContent>
+          <AppContent {...props} />
           <AppFooter />
         </Layout>
       </Layout>

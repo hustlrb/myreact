@@ -7,11 +7,14 @@ import Example from './example/Example';
 
 const history = syncHistoryWithStore(browserHistory, appStore);
 
-const Welcome = () => (
-  <div>
-    <h2>Welcome</h2>
-  </div>
-);
+const Welcome = (props) => {
+  console.log('[DEBUG] ---> Welcome props: ', props);
+  return (
+    <div>
+      <h2>Welcome</h2>
+    </div>
+  );
+};
 
 const Other = () => (
   <div>
@@ -25,13 +28,22 @@ const Another = () => (
   </div>
 );
 
+const Xxx = () => (
+  <div>
+    <h2>xxx</h2>
+  </div>
+);
+
 const Routes = () => (
   <Router history={history}>
-    <Route path="/" component={AppFx}>
+    <Route path="/" breadcrumbName="首页" component={AppFx}> {/* route matched component will be passed as a child of AppFx */}
       <IndexRoute component={Welcome}/>
-      <Route path="other" component={Other} />
-      <Route path="another" component={Another} />
-      <Route path="example" component={Example} />
+      <Route path="other" breadcrumbName="其它" component={Other} />
+      <Route path="another" breadcrumbName="另外" component={Another} />
+      <Route path="example" breadcrumbName="示例" component={Example}>
+        <IndexRoute component={Welcome}/>
+        <Route path="xxx" breadcrumbName="示例xxxx" component={Xxx}/>
+      </Route>
     </Route>
   </Router>
 );

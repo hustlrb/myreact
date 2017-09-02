@@ -1,7 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
+import { Link } from 'react-router';
 import { push } from 'react-router-redux'
+import PropTypes from 'prop-types';
 import { Button, Card } from 'antd';
 import { actionRequestFetchPosition, actionRequestFetchDomain } from './redux';
 import { selectPosition, selectDomain } from './redux';
@@ -28,6 +29,8 @@ class Example extends React.Component {
     let position = this.props.position.address;
     return (
       <div className="App">
+        <Link to="/example/xxx">链接</Link>
+        {this.props.children}
         <div className="App-header">
           <img src={logo} className="App-logo" alt="logo"/>
           <h2>Welcome to React</h2>
