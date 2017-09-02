@@ -2,15 +2,15 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import { Layout, Menu } from 'antd';
-import './AppHeader.less'
+import './style.less'
 
 import logo from '../example/ExampleLogo.svg';
 
 const AppHeader = () => {
   return (
     <Layout.Header>
-      <Link to="/"><img src={logo} className="logo" alt="logo" /></Link>
-      <span className="header-title">共享干衣柜后台管理系统</span>
+      <Link to="/"><img src={logo} className="ant-layout-header-logo" alt="logo" /></Link>
+      <span className="ant-layout-header-title">共享干衣柜后台管理系统</span>
       <Menu
         theme="dark"
         mode="horizontal"

@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import { Layout, Breadcrumb } from 'antd';
-import './AppContent.less';
+import './style.less';
 
 const itemRender = (route, params, routes, paths) => {
   const last = routes.indexOf(route) === routes.length - 1;

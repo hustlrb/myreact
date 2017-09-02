@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import { Layout, Menu, Icon } from 'antd';
-import './AppMenu.less'
+import './style.less'
 
 class AppMenu extends React.Component {
   static __ANT_LAYOUT_SIDER = true;
