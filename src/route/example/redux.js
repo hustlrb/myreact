@@ -4,25 +4,6 @@ import { REHYDRATE } from 'redux-persist/constants';
 import { Record } from 'immutable';
 import { fetchDomain, fetchPosition } from '../../api/example';
 
-// --- Model
-
-const ExampleModel = Record({
-  domain: undefined,
-  position: undefined,
-}, "ExampleModel");
-
-// --- Selector
-
-export function selectDomain(appState) {
-  let example = appState.example;
-  return example.domain;
-}
-
-export function selectPosition(appState) {
-  let example = appState.example;
-  return example.position;
-}
-
 // --- Action
 
 const REQUEST_FETCH_DOMAIN = 'REQUEST_FETCH_DOMAIN';
@@ -87,7 +68,7 @@ const reduceFetchLocation = (state, action) => {
   return state;
 };
 
-export const reducer = (state=ExampleModel(), action) => {
+export const reducer = (state=ExampleState(), action) => {
   switch (action.type) {
     case REHYDRATE:
       return reduceRehydrate(state, action);
@@ -99,3 +80,22 @@ export const reducer = (state=ExampleModel(), action) => {
       return state;
   }
 };
+
+// --- State
+
+const ExampleState = Record({
+  domain: undefined,
+  position: undefined,
+}, "ExampleState");
+
+// --- Selector
+
+export function selectDomain(appState) {
+  let example = appState.example;
+  return example.domain;
+}
+
+export function selectPosition(appState) {
+  let example = appState.example;
+  return example.position;
+}

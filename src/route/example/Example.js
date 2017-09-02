@@ -8,7 +8,7 @@ import { selectPosition, selectDomain } from './redux';
 import logo from './ExampleLogo.svg';
 import './Example.css';
 
-class About extends React.Component {
+class Example extends React.Component {
   static propTypes = {
     domain: PropTypes.string.isRequired,
     position: PropTypes.object.isRequired
@@ -70,4 +70,4 @@ const mapDispatchToProps = {
   actionRequestFetchDomain
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(About);
+export default connect(mapStateToProps, mapDispatchToProps)(Example);

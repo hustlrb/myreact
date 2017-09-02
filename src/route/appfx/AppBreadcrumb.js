@@ -14,4 +14,4 @@ class AppBreadcrumb extends React.Component {
   }
 }
 
-export default connect()(AppBreadcrumb);
+export default AppBreadcrumb;
