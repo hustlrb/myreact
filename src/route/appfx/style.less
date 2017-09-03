@@ -1,32 +1,72 @@
-.ant {
-  &-menu {
-    &-item {
-      background: #333744;
-    }
+.ant-layout {
+  &-header {
+    height: 48px;
+    padding: 0 10px 0 0;
   }
-  &-breadcrumb {
-    margin: 10px;
+
+  &-sider {
+    width: 200px;
+    height: ~"calc(100vh - 48px)";
+    background: #333744;
   }
-  &-layout {
-    &-header {
-      padding: 0 10px 0 0;
-      &-logo {
-        width: 200px;
-        height: 64px;
-        background: #333;
-        border-radius: 6px;
-        margin: 0 0 0 0;
-        float: left;
-      }
-      &-title {
-        margin: 0 0 0 20px;
-        font-size: 24px;
-      }
-    }
-    &-content {
-      background: #fff;
-      padding: 12px;
-      height: 280px;
-    }
+
+  &-content {
+    margin: 24px;
   }
+
+  &-footer {
+    height: 48px;
+    line-height: 48px;
+    padding: 0;
+    text-align: center;
+    font-size: 12px;
+    color: #999;
+    background: #fff;
+  }
+}
+
+.ant-breadcrumb {
+  height: 64px;
+  line-height: 64px;
+  padding: 0 24px;
+  margin-bottom: -24px;
+}
+
+.app-logo {
+  width: 200px;
+  height: 48px;
+  background: #333;
+  margin: 0;
+  float: left;
+}
+
+.app-header-title {
+  height: 48px;
+  line-height: 48px;
+  font-size: 24px;
+  margin: 0 0 0 20px;
+  float: left;
+}
+
+.app-header-menu {
+  background: #373D41;
+  float: right;
+  .ant-menu-item {
+    height: 48px;
+  }
+}
+
+.app-sider-menu {
+  background: #42485B;
+  height: ~"calc(100vh - 48px)";
+  overflow-x: hidden;
+  .ant-menu-item {
+    background: #333744;
+  }
+}
+
+.app-content {
+  padding: 24px;
+  min-height: ~"calc(100vh - (48px + 64px - 24px + 24px + 24px + 48px))";
+  background: #fff;
 }
