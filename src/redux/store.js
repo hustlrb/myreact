@@ -38,7 +38,7 @@ const createAppStore = (initialState = {}) => {
 const appStore = createAppStore(window.__INITIAL_STATE__);
 const persistor = persistStore(appStore, {
   whitelist: [],
-  blacklist: ['routing']
+  blacklist: ['routing', 'appfx']
 });
 
 export { persistor };

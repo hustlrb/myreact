@@ -1,18 +1,19 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { Menu } from 'antd';
+import { Menu, Icon } from 'antd';
+import './style.less';
 
-const AppHeaderMenu = () => {
+const AppHeaderMenu = (props) => {
+  const { logout, user } = props;
+  let handleClickMenu = e => e.key === 'logout' && logout();
   return (
-    <Menu
-      theme="dark"
-      mode="horizontal"
-      defaultSelectedKeys={['2']}
-      className="app-header-menu"
-    >
-      <Menu.Item key="loginUser">您好，系统管理员</Menu.Item>
+    <Menu theme="dark" mode='horizontal' onClick={handleClickMenu} className='app-header-menu' >
+      <Menu.SubMenu title={< span ><Icon type='user' />{user.name}</span>}>
+        <Menu.Item key='logout'>
+          <a>注销</a>
+        </Menu.Item>
+      </Menu.SubMenu>
     </Menu>
   )
 };
 
-export default connect()(AppHeaderMenu);
+export default AppHeaderMenu;
