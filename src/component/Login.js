@@ -4,65 +4,57 @@ import {Button, Row, Form, Input, Spin, message} from 'antd';
 import config from '../util/config';
 import './login.less';
 
-const FormItem = Form.Item;
-
 const LoginFormImpl = (props) => {
-  const {loading, onOk, form: {getFieldDecorator, validateFieldsAndScroll}} = props;
+  const {loading, doSubmit, form: {getFieldDecorator, validateFieldsAndScroll}} = props;
 
-  function handleOk() {
-    validateFieldsAndScroll((errors, values) => {
-      if (errors) {
-        return
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    validateFieldsAndScroll((e, values) => {
+      if (!e) {
+        doSubmit(values);
       }
-      onOk(values)
-    })
-  }
+    });
+  };
 
   return (
-    <div className="form">
-      <div className="logo">
-        <img src={config.logoSrc}/>
-        <span>衣家宝</span>
-      </div>
-      <Form>
-        <FormItem>
-          {
-            getFieldDecorator('username',
-              {
-                rules: [{
-                  required: true,
-                  message: '请填写用户名'
-                }]
-              })
-            (<Input size='large' placeholder='用户名'/>)
-          }
-        </FormItem>
-        <FormItem>
-          {
-            getFieldDecorator('password', {
-            rules: [
-              {
+    <Form onSubmit={handleSubmit}>
+      <Form.Item>
+        {
+          getFieldDecorator('username',
+            {
+              rules: [{
                 required: true,
-                message: '请填写密码'
-              }
-            ]
-          })(<Input size='large' type='password' placeholder='密码'/>)}
-        </FormItem>
-        <Row>
-          <Button type='primary' size='large' onClick={handleOk} loading={loading}>
-            登录
-          </Button>
-        </Row>
-
-      </Form>
-    </div>
+                message: '请填写用户名'
+              }]
+            })
+          (<Input placeholder='用户名' disabled={loading} />)
+        }
+      </Form.Item>
+      <Form.Item>
+        {
+          getFieldDecorator('password',
+            {
+              rules: [{
+                  required: true,
+                  message: '请填写密码'
+                }]
+            })
+          (<Input type='password' placeholder='密码'/>)
+        }
+      </Form.Item>
+      <Form.Item>
+        <Button type='primary' htmlType="submit" loading={loading} className="login-form-button">
+          登录
+        </Button>
+      </Form.Item>
+    </Form>
   )
 };
 
 LoginFormImpl.propTypes = {
-  form: PropTypes.object,
   loading: PropTypes.bool,
-  onOk: PropTypes.func
+  doSubmit: PropTypes.func,
+  form: PropTypes.object
 };
 
 const LoginForm = Form.create()(LoginFormImpl);
@@ -72,13 +64,17 @@ const Login = (props) => {
   const {login, loading} = props;
   const loginProps = {
     loading,
-    onOk (data) {
+    doSubmit(data) {
       login({...data, error:()=>{message.error('用户名或密码错误')}});
     }
   };
   return (
-    <div className="spin">
+    <div className="login-form">
       <Spin tip='加载用户信息...' spinning={loading} size='large'>
+        <div className="login-form-logo">
+          <img src={config.logoSrc}/>
+          <span>衣家宝</span>
+        </div>
         <LoginForm {...loginProps} />
       </Spin>
     </div>
