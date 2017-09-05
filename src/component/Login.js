@@ -1,19 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {Button, Row, Form, Input, Spin, message} from 'antd';
-import config from '../../util/config';
+import config from '../util/config';
 import './login.less';
 
 const FormItem = Form.Item;
 
-const login = ({
-                 loggingIn,
-                 onOk,
-                 form: {
-                   getFieldDecorator,
-                   validateFieldsAndScroll
-                 }
-               }) => {
+const LoginFormImpl = (props) => {
+  const {loading, onOk, form: {getFieldDecorator, validateFieldsAndScroll}} = props;
+
   function handleOk() {
     validateFieldsAndScroll((errors, values) => {
       if (errors) {
@@ -22,59 +17,61 @@ const login = ({
       onOk(values)
     })
   }
-  // console.log('---> form: ', styles.form);
+
   return (
     <div className="form">
       <div className="logo">
         <img src={config.logoSrc}/>
-        <span>邻家优店</span>
+        <span>衣家宝</span>
       </div>
-      <form>
-        <FormItem hasFeedback>
-          {getFieldDecorator('username', {
-            rules: [
+      <Form>
+        <FormItem>
+          {
+            getFieldDecorator('username',
               {
-                required: true,
-                message: '请填写用户名'
-              }
-            ]
-          })(<Input size='large' onPressEnter={handleOk} placeholder='用户名'/>)}
+                rules: [{
+                  required: true,
+                  message: '请填写用户名'
+                }]
+              })
+            (<Input size='large' placeholder='用户名'/>)
+          }
         </FormItem>
-        <FormItem hasFeedback>
-          {getFieldDecorator('password', {
+        <FormItem>
+          {
+            getFieldDecorator('password', {
             rules: [
               {
                 required: true,
                 message: '请填写密码'
               }
             ]
-          })(<Input size='large' type='password' onPressEnter={handleOk} placeholder='密码'/>)}
+          })(<Input size='large' type='password' placeholder='密码'/>)}
         </FormItem>
         <Row>
-          <Button type='primary' size='large' onClick={handleOk} loading={loggingIn}>
+          <Button type='primary' size='large' onClick={handleOk} loading={loading}>
             登录
           </Button>
         </Row>
 
-      </form>
+      </Form>
     </div>
   )
 };
 
-login.propTypes = {
+LoginFormImpl.propTypes = {
   form: PropTypes.object,
-  loginButtonLoading: PropTypes.bool,
+  loading: PropTypes.bool,
   onOk: PropTypes.func
 };
 
-const LoginForm = Form.create()(login);
+const LoginForm = Form.create()(LoginFormImpl);
 
 const Login = (props) => {
   console.log('[DEBUG] ---> Login props: ', props);
-  const {login, loading, loginButtonLoading} = props;
+  const {login, loading} = props;
   const loginProps = {
     loading,
-    loginButtonLoading,
     onOk (data) {
       login({...data, error:()=>{message.error('用户名或密码错误')}});
     }

@@ -2,9 +2,9 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router';
 import {Layout, Breadcrumb} from 'antd';
-import Login from './Login';
 import AppHeaderMenu from './AppHeaderMenu';
 import AppSiderMenu from './AppSiderMenu';
+import Login from '../../component/Login';
 import {actionRequestLogin, actionRequestLogout} from "./redux";
 import {selectLoading, selectLoggingIn, selectLoggedIn} from './redux';
 
@@ -19,8 +19,9 @@ const itemRender = (route, params, routes, paths) => {
 
 const AppFx = (props) => {
   console.log('[DEBUG] ---> AppFx props: ', props);
-  const {loading, loggingIn, loggedIn, login} = props;
-  const loginProps = {loading, loggingIn, loggedIn, login};
+
+  const {loading, loggedIn, login} = props;
+  const loginProps = {loading, loggedIn, login};
   if (!loggedIn) {
     return (
       <Login {...loginProps} />
@@ -58,7 +59,6 @@ const AppFx = (props) => {
 const mapStateToProps = (appState, ownProps) => {
   return {
     loading: selectLoading(appState),
-    loggingIn: selectLoggingIn(appState),
     loggedIn: selectLoggedIn(appState)
   };
 };

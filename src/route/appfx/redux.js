@@ -7,8 +7,6 @@ import { login, logout } from '../../api/AppFx';
 
 const REQUEST_LOADING = 'AppFx/REQUEST_LOADING';
 const FINISH_LOADING = 'AppFx/FINISH_LOADING';
-const REQUEST_LOGGING_IN = 'AppFx/REQUEST_LOGGING_IN';
-const FINISH_LOGGING_IN = 'AppFx/FINISH_LOGGING_IN';
 const REQUEST_LOGIN = 'AppFx/REQUEST_LOGIN';
 const FINISH_LOGIN = 'AppFx/FINISH_LOGIN';
 const REQUEST_LOGOUT = 'AppFx/REQUEST_LOGOUT';
@@ -16,8 +14,6 @@ const FINISH_LOGOUT = 'AppFx/FINISH_LOGOUT';
 
 export const actionRequestLoading = createAction(REQUEST_LOADING);
 export const actionFinishLoading = createAction(FINISH_LOADING);
-export const actionRequestLoggingIn = createAction(REQUEST_LOGGING_IN);
-export const actionFinishLoggingIn = createAction(FINISH_LOGGING_IN);
 export const actionRequestLogin = createAction(REQUEST_LOGIN);
 export const actionFinishLogin = createAction(FINISH_LOGIN);
 export const actionRequestLogout = createAction(REQUEST_LOGOUT);
@@ -27,9 +23,11 @@ export const actionFinishLogout = createAction(FINISH_LOGOUT);
 // --- Saga
 
 function* sagaLogin(action) {
+  yield put(actionRequestLoading());
   let payload = action.payload;
   let res = yield call(login, payload);
   yield put(actionFinishLogin({loggedIn: res.loggedIn}));
+  yield put(actionFinishLoading());
 }
 
 function* sagaLogout(action) {
@@ -46,13 +44,9 @@ export const saga = [
 // --- Reducer
 
 const reduceLoading = (state, action) => {
-  action.type === REQUEST_LOADING ? state.set('loading', true)
+  state = action.type === REQUEST_LOADING ? state.set('loading', true)
     : state.set('loading', false);
-};
-
-const reduceLoggingIn = (state, action) => {
-  action.type === REQUEST_LOGGING_IN ? state.set('loggingIn', true)
-    : state.set('loggingIn', false);
+  return state;
 };
 
 const reduceLogin = (state, action) => {
@@ -72,9 +66,6 @@ export const reducer = (state=AppFxState(), action) => {
     case REQUEST_LOADING:
     case FINISH_LOADING:
       return reduceLoading(state, action);
-    case REQUEST_LOGGING_IN:
-    case FINISH_LOGGING_IN:
-      return reduceLoggingIn(state, action);
     case FINISH_LOGIN:
       return reduceLogin(state, action);
     case FINISH_LOGOUT:
@@ -88,7 +79,6 @@ export const reducer = (state=AppFxState(), action) => {
 
 const AppFxState = Record({
   loading: false,
-  loggingIn: false,
   loggedIn: false,
 
 
