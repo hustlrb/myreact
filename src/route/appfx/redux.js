@@ -51,7 +51,8 @@ const reduceLoading = (state, action) => {
 
 const reduceLogin = (state, action) => {
   const loggedIn = action.payload.loggedIn;
-  state = state.set('loggedIn', loggedIn);
+  // state = state.set('loggedIn', loggedIn);
+  state = state.merge({'loggedIn': loggedIn});
   return state;
 };
 
