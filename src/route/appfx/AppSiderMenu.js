@@ -51,12 +51,12 @@ class AppSiderMenu extends React.Component {
         className="app-sider-menu"
       >
         <Menu.SubMenu key="/cabinet" title={<span><Icon type="laptop" />干衣柜综合管理</span>}>
-          <Menu.Item key="/cabinet/list"><Link to="/example">干衣柜信息管理</Link></Menu.Item>
+          <Menu.Item key="/cabinet"><Link to="/cabinet">干衣柜信息管理</Link></Menu.Item>
         </Menu.SubMenu>
 
         <Menu.SubMenu key="/site" title={<span><Icon type="laptop" />服务点综合管理</span>}>
           <Menu.Item key="/site/list"><Link to="/other">服务点信息管理</Link></Menu.Item>
-          <Menu.Item key="/site/cabinet"><Link to="/another">服务点干衣柜管理</Link></Menu.Item>
+          <Menu.Item key="/site/cabinet"><Link to="/example">服务点干衣柜管理</Link></Menu.Item>
           <Menu.Item key="/site/investor">投资人信息管理</Menu.Item>
         </Menu.SubMenu>
         <Menu.SubMenu key="/order" title={<span><Icon type="notification" />充值与订单管理</span>}>

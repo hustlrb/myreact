@@ -4,6 +4,7 @@ import { syncHistoryWithStore } from 'react-router-redux';
 import appStore from '../redux/store';
 import AppFx from './appfx/AppFx';
 import Example from './example/Example';
+import CabinetList from "./cabinet/CabinetList";
 
 const history = syncHistoryWithStore(browserHistory, appStore);
 
@@ -38,6 +39,7 @@ const Routes = () => (
   <Router history={history}>
     <Route path="/" breadcrumbName="首页" component={AppFx}> {/* route matched component will be passed as a child of AppFx */}
       <IndexRoute component={Welcome}/>
+      <Route path="/cabinet" breadcrumbName="干衣柜综合管理" component={CabinetList}/>
       <Route path="other" breadcrumbName="其它" component={Other} />
       <Route path="another" breadcrumbName="另外" component={Another} />
       <Route path="example" breadcrumbName="示例" component={Example}>

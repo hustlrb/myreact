@@ -2,7 +2,7 @@ import sleep from '../util/sleep';
 
 export async function login(payload) {
   try {
-    await sleep(5000);
+    await sleep(1000);
     return {loggedIn: true};
   } catch (e) {
     return {loggedIn: false};
