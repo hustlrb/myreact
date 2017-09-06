@@ -1,6 +1,6 @@
 import { applyMiddleware, compose, createStore } from 'redux';
-import { browserHistory } from 'react-router';
 import { routerMiddleware } from 'react-router-redux';
+import createHistory from 'history/createBrowserHistory';
 import createSagaMiddleware from 'redux-saga';
 import { createLogger } from 'redux-logger';
 import { persistStore } from 'redux-persist';
@@ -11,8 +11,10 @@ import rootSaga from './saga';
 const win = window;
 win.Perf = Perf;
 
+const routerHistory = createHistory();
+
 const createAppStore = (initialState = {}) => {
-  const router = routerMiddleware(browserHistory);
+  const router = routerMiddleware(routerHistory);
   const saga = createSagaMiddleware();
   const logger = createLogger();
 
@@ -38,8 +40,8 @@ const createAppStore = (initialState = {}) => {
 const appStore = createAppStore(window.__INITIAL_STATE__);
 const persistor = persistStore(appStore, {
   whitelist: [],
-  blacklist: ['routing', 'appfx']
+  blacklist: ['router', 'appfx']
 });
 
-export { persistor };
 export default appStore;
+export { routerHistory, persistor };

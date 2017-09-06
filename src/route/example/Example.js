@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router';
+import { Route, Link } from 'react-router-dom';
 import { push } from 'react-router-redux'
 import PropTypes from 'prop-types';
 import { Button, Card } from 'antd';
@@ -8,6 +8,15 @@ import { actionRequestFetchPosition, actionRequestFetchDomain } from './redux';
 import { selectPosition, selectDomain } from './redux';
 import logo from './ExampleLogo.svg';
 import './style.less';
+
+const Welcome = (props) => {
+  console.log('[DEBUG] ---> Welcome props: ', props);
+  return (
+    <div>
+      <h2>Welcome</h2>
+    </div>
+  );
+};
 
 class Example extends React.Component {
   static propTypes = {
@@ -30,7 +39,7 @@ class Example extends React.Component {
     return (
       <div className="App">
         <Link to="/example/xxx">链接</Link>
-        {this.props.children}
+        <Route exact path="/example/xxx" component={Welcome} />
         <div className="App-header">
           <img src={logo} className="App-logo" alt="logo"/>
           <h2>Welcome to React</h2>

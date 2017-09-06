@@ -1,14 +1,34 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {Link} from 'react-router';
+import {Route, Link, withRouter} from 'react-router-dom';
 import {Layout, Breadcrumb} from 'antd';
 import AppHeaderMenu from './AppHeaderMenu';
 import AppSiderMenu from './AppSiderMenu';
-import Login from '../../component/Login';
+import Dashboard from '../dashboard/Dashboard';
 import {actionRequestLogin, actionRequestLogout} from "./redux";
-import {selectLoading, selectLoggingIn, selectLoggedIn} from './redux';
+import {selectLoading, selectLoggedIn} from './redux';
+import Example from '../example/Example';
+import CabinetList from "../cabinet/CabinetList";
 
 import logo from '../example/ExampleLogo.svg';
+
+const Other = () => (
+  <div>
+    <h2>Other</h2>
+  </div>
+);
+
+const Another = () => (
+  <div>
+    <h2>Another</h2>
+  </div>
+);
+
+const Xxx = () => (
+  <div>
+    <h2>xxx</h2>
+  </div>
+);
 
 const itemRender = (route, params, routes, paths) => {
   const last = routes.indexOf(route) === routes.length - 1;
@@ -20,17 +40,9 @@ const itemRender = (route, params, routes, paths) => {
 const AppFx = (props) => {
   console.log('[DEBUG] ---> AppFx props: ', props);
 
-  const {loading, loggedIn, login} = props;
-  const loginProps = {loading, loggedIn, login};
-  if (!loggedIn) {
-    return (
-      <Login {...loginProps} />
-    );
-  }
-
-  const {routes, params, children} = props;
+  const {match} = props;
   return (
-    <Layout style={{ height: "100%" }}>
+    <Layout style={{height: "100%"}}>
       <Layout.Header>
         <Link to="/"><img src={logo} className="app-logo" alt="logo" /></Link>
         <div className="app-header-title">共享干衣柜后台管理系统</div>
@@ -41,10 +53,15 @@ const AppFx = (props) => {
           <AppSiderMenu />
         </Layout.Sider>
         <Layout>
-          <Breadcrumb routes={routes} params={params} itemRender={itemRender} />
+          <Breadcrumb itemRender={itemRender} />
           <Layout.Content>
             <div className="app-content">
-              {children}
+              <Route exact path={match.url} component={Dashboard}/>
+              <Route path="/cabinet" component={CabinetList}/>
+              <Route path="/other" component={Other} />
+              <Route path="/another" component={Another} />
+              <Route path="/example" component={Example}/>
+              <Route path="/xxx" component={Xxx}/>
             </div>
           </Layout.Content>
           <Layout.Footer>
@@ -68,4 +85,4 @@ const mapDispatchToProps = {
   logout: actionRequestLogout
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(AppFx);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(AppFx));

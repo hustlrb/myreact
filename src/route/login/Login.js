@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {Button, Row, Form, Input, Spin, message} from 'antd';
-import config from '../util/config';
+import config from '../../util/config';
 import './login.less';
 
 const LoginFormImpl = (props) => {
