@@ -2,8 +2,8 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {Route, Link, withRouter} from 'react-router-dom';
 import {Layout, Breadcrumb} from 'antd';
-import AppHeaderMenu from './AppHeaderMenu';
-import AppSiderMenu from './AppSiderMenu';
+import AppHeaderMenu from '../../component/AppHeaderMenu/AppHeaderMenu';
+import AppSiderMenu from '../../component/AppSiderMenu/AppSiderMenu';
 import Dashboard from '../dashboard/Dashboard';
 import {actionRequestLogin, actionRequestLogout} from "./redux";
 import {selectLoading, selectLoggedIn} from './redux';
@@ -43,32 +43,32 @@ const AppFx = (props) => {
   const {match} = props;
   return (
     <Layout style={{height: "100%"}}>
-      <Layout.Header>
-        <Link to="/"><img src={logo} className="app-logo" alt="logo" /></Link>
-        <div className="app-header-title">共享干衣柜后台管理系统</div>
+      <Layout.Header style={{display: "flex", justifyContent: "space-between"}}>
+        <div style={{display: "flex", alignItems: "center"}}>
+          <Link to="/"><img src={logo} alt="logo" style={{display: "block", width: "48px", height: "48px"}} /></Link>
+          <span style={{fontSize: "24px"}}>共享干衣柜后台管理系统</span>
+        </div>
         <AppHeaderMenu user={{name: "admin"}} logout={props.logout} />
       </Layout.Header>
-      <Layout>
-        <Layout.Sider>
+      <Layout style={{minHeight: "0"}}>
+        <Layout.Sider style={{overflow: "auto"}}>
           <AppSiderMenu />
         </Layout.Sider>
-        <Layout>
+        <Layout.Content style={{overflow: "auto"}}>
           <Breadcrumb itemRender={itemRender} />
-          <Layout.Content>
-            <div className="app-content">
-              <Route exact path={match.url} component={Dashboard}/>
-              <Route path="/cabinet" component={CabinetList}/>
-              <Route path="/other" component={Other} />
-              <Route path="/another" component={Another} />
-              <Route path="/example" component={Example}/>
-              <Route path="/xxx" component={Xxx}/>
-            </div>
-          </Layout.Content>
-          <Layout.Footer>
-            衣家宝 版权所有 © 2017 由 绿蚁科技 提供技术支持
-          </Layout.Footer>
-        </Layout>
+          <div>
+            <Route exact path={match.url} component={Dashboard}/>
+            <Route path="/cabinet" component={CabinetList}/>
+            <Route path="/other" component={Other} />
+            <Route path="/another" component={Another} />
+            <Route path="/example" component={Example}/>
+            <Route path="/xxx" component={Xxx}/>
+          </div>
+        </Layout.Content>
       </Layout>
+      <Layout.Footer style={{textAlign: "center", background: "#fff"}}>
+        衣家宝 版权所有 © 2017 由 绿蚁科技 提供技术支持
+      </Layout.Footer>
     </Layout>
   )
 };
