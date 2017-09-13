@@ -1,34 +1,17 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {Route, Link, withRouter} from 'react-router-dom';
+import {Route, Link, withRouter, Switch} from 'react-router-dom';
 import {Layout, Breadcrumb} from 'antd';
-import AppHeaderMenu from '../../component/AppHeaderMenu/AppHeaderMenu';
-import AppSiderMenu from '../../component/AppSiderMenu/AppSiderMenu';
+import HeaderMenu from '../../component/HeaderMenu';
+import SiderMenu from '../../component/SiderMenu';
 import Dashboard from '../dashboard/Dashboard';
+import User from '../user/User';
 import {actionRequestLogin, actionRequestLogout} from "./redux";
 import {selectLoading, selectLoggedIn} from './redux';
 import Example from '../example/Example';
 import CabinetList from "../cabinet/CabinetList";
 
 import logo from '../example/ExampleLogo.svg';
-
-const Other = () => (
-  <div>
-    <h2>Other</h2>
-  </div>
-);
-
-const Another = () => (
-  <div>
-    <h2>Another</h2>
-  </div>
-);
-
-const Xxx = () => (
-  <div>
-    <h2>xxx</h2>
-  </div>
-);
 
 const itemRender = (route, params, routes, paths) => {
   const last = routes.indexOf(route) === routes.length - 1;
@@ -48,22 +31,20 @@ const AppFx = (props) => {
           <Link to="/"><img src={logo} alt="logo" style={{display: "block", width: "48px", height: "48px"}} /></Link>
           <span style={{fontSize: "24px"}}>共享干衣柜后台管理系统</span>
         </div>
-        <AppHeaderMenu user={{name: "admin"}} logout={props.logout} />
+        <HeaderMenu user={{name: "admin"}} logout={props.logout} />
       </Layout.Header>
       <Layout style={{minHeight: "0"}}>
         <Layout.Sider style={{overflow: "auto"}}>
-          <AppSiderMenu />
+          <SiderMenu />
         </Layout.Sider>
         <Layout.Content style={{overflow: "auto"}}>
           <Breadcrumb itemRender={itemRender} />
-          <div>
+          <Switch>
             <Route exact path={match.url} component={Dashboard}/>
-            <Route path="/cabinet" component={CabinetList}/>
-            <Route path="/other" component={Other} />
-            <Route path="/another" component={Another} />
-            <Route path="/example" component={Example}/>
-            <Route path="/xxx" component={Xxx}/>
-          </div>
+            <Route exact path="/cabinet/list" component={CabinetList} />
+            <Route exact path="/system/user" component={User} />
+            <Route exact path="/example" component={Example}/>
+          </Switch>
         </Layout.Content>
       </Layout>
       <Layout.Footer style={{textAlign: "center", background: "#fff"}}>

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {Button, Row, Form, Input, Spin, message} from 'antd';
 import config from '../../util/config';
-import './login.less';
+import './style.less';
 
 const LoginFormImpl = (props) => {
   const {loading, doSubmit, form: {getFieldDecorator, validateFieldsAndScroll}} = props;

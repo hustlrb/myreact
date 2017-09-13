@@ -1,8 +1,8 @@
 import React from 'react';
 import { Menu, Icon } from 'antd';
-import './style.less';
+import './HeaderMenu.less';
 
-const AppHeaderMenu = (props) => {
+const HeaderMenu = (props) => {
   const { logout, user } = props;
   let handleClickMenu = e => e.key === 'logout' && logout();
   return (
@@ -16,4 +16,4 @@ const AppHeaderMenu = (props) => {
   )
 };
 
-export default AppHeaderMenu;
+export default HeaderMenu;
