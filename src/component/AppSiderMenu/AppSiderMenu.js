@@ -63,15 +63,31 @@ class AppSiderMenu extends React.Component {
           <Menu.Item key="/order/deposit">用户充值管理</Menu.Item>
           <Menu.Item key="/order/list">订单信息管理</Menu.Item>
         </Menu.SubMenu>
-        <Menu.SubMenu key="/settlement" title={<span><Icon type="notification" />结算管理</span>}>
+        <Menu.SubMenu key="/settlement" title={<span><Icon type="notification" />结算报表</span>}>
           <Menu.Item key="/settlement/list">服务点分成统计</Menu.Item>
           <Menu.Item key="/settlement/site">服务单位分成结算</Menu.Item>
           <Menu.Item key="/settlement/investor">投资人分成结算</Menu.Item>
+        </Menu.SubMenu>
+        <Menu.SubMenu key="/promotion" title={<span><Icon type="notification" />营销活动</span>}>
+          <Menu.Item key="/promotion/list">活动管理</Menu.Item>
+          <Menu.Item key="/promotion/deposit">发布充值活动</Menu.Item>
+          <Menu.Item key="/promotion/point">发布积分活动</Menu.Item>
+          <Menu.Item key="/promotion/bonus">发布红包活动</Menu.Item>
+        </Menu.SubMenu>
+        <Menu.SubMenu key="/user" title={<span><Icon type="notification" />用户管理</span>}>
+          <Menu.Item key="/user/list">用户信息管理</Menu.Item>
+        </Menu.SubMenu>
+        <Menu.SubMenu key="/message" title={<span><Icon type="notification" />消息推送</span>}>
+          <Menu.Item key="/message/system">系统消息</Menu.Item>
+          <Menu.Item key="/message/promotion">营销类消息</Menu.Item>
         </Menu.SubMenu>
         <Menu.SubMenu key="/system" title={<span><Icon type="notification" />系统管理</span>}>
           <Menu.Item key="/system/user">用户与角色管理</Menu.Item>
           <Menu.Item key="/system/role">角色与权限管理</Menu.Item>
           <Menu.Item key="/system/log">操作日志管理</Menu.Item>
+        </Menu.SubMenu>
+        <Menu.SubMenu key="/profit" title={<span><Icon type="notification" />投资收益</span>}>
+          <Menu.Item key="/profit/list">投资收益管理</Menu.Item>
         </Menu.SubMenu>
       </Menu>
     )
