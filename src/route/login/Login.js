@@ -2,9 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {Button, Row, Form, Input, Spin, message} from 'antd';
 import config from '../../util/config';
-import './style.less';
+import style from './style.module.less';
 
 const LoginFormImpl = (props) => {
+  console.log('[DEBUG] ---> LoginFormImpl props: ', props);
   const {loading, doSubmit, form: {getFieldDecorator, validateFieldsAndScroll}} = props;
 
   const handleSubmit = (e) => {
@@ -43,7 +44,7 @@ const LoginFormImpl = (props) => {
         }
       </Form.Item>
       <Form.Item>
-        <Button type='primary' htmlType="submit" loading={loading} className="login-form-button">
+        <Button type='primary' htmlType="submit" loading={loading} className={style.button}>
           登录
         </Button>
       </Form.Item>
@@ -61,7 +62,8 @@ const LoginForm = Form.create()(LoginFormImpl);
 
 const Login = (props) => {
   console.log('[DEBUG] ---> Login props: ', props);
-  const {login, loading} = props;
+  const {login} = props;
+  const loading = false;
   const loginProps = {
     loading,
     doSubmit(data) {
@@ -69,9 +71,9 @@ const Login = (props) => {
     }
   };
   return (
-    <div className="login-form">
+    <div className={style.form}>
       <Spin tip='加载用户信息...' spinning={loading} size='large'>
-        <div className="login-form-logo">
+        <div className={style.logo}>
           <img src={config.logoSrc}/>
           <span>衣家宝</span>
         </div>

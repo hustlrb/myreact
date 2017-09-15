@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Menu, Icon } from 'antd';
-import './HeaderMenu.less'
+import './HeaderMenu.module.less'
 
 class SiderMenu extends React.Component {
   static __ANT_LAYOUT_SIDER = true;

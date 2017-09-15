@@ -1,4 +1,4 @@
-.login-form {
+.form {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -8,12 +8,12 @@
   padding: 36px;
   box-shadow: 0 0 100px rgba(0,0,0,.08);
 
-  &-button {
+  .button {
     width: 100%;
   }
 }
 
-.login-form-logo {
+.logo {
   text-align: center;
   height: 40px;
   line-height: 40px;
@@ -33,7 +33,9 @@
   }
 }
 
-.ant-spin-container,
-.ant-spin-nested-loading {
-  height: 100%;
+:global {
+  .ant-spin-container,
+  .ant-spin-nested-loading {
+    height: 100%;
+  }
 }

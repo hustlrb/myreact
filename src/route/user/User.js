@@ -1,6 +1,6 @@
 import React from 'react';
 import { Menu, Icon } from 'antd';
-import './style.less';
+import './style.module.less';
 
 const User = (props) => {
   console.log('[DEBUG] ---> User props: ', props);

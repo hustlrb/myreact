@@ -1,6 +1,6 @@
 import React from 'react';
 import { Menu, Icon } from 'antd';
-import './HeaderMenu.less';
+import './HeaderMenu.module.less';
 
 const HeaderMenu = (props) => {
   const { logout, user } = props;

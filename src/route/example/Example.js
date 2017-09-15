@@ -7,7 +7,7 @@ import { Button, Card } from 'antd';
 import { actionRequestFetchPosition, actionRequestFetchDomain } from './redux';
 import { selectPosition, selectDomain } from './redux';
 import logo from './ExampleLogo.svg';
-import './style.less';
+import style from './style.module.less';
 
 const Welcome = (props) => {
   console.log('[DEBUG] ---> Welcome props: ', props);
@@ -37,14 +37,14 @@ class Example extends React.Component {
     let domain = this.props.domain;
     let position = this.props.position.address;
     return (
-      <div className="App">
+      <div className={style.app}>
         <Link to="/example/xxx">链接</Link>
         <Route exact path="/example/xxx" component={Welcome} />
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo"/>
+        <div className={style.app.header}>
+          <img src={logo} className={style.logo} alt="logo"/>
           <h2>Welcome to React</h2>
         </div>
-        <p className="App-intro">
+        <p className={style.app.intro}>
           当前域名: {domain}
         </p>
         <div>
